@@ -24,6 +24,17 @@ resource "google_compute_health_check" "https_health_check" {
 resource "google_compute_instance_group" "k8s_workers_group" {
   name  = "k8s-workers-group"
   zone  = "us-central1-a"
+
+  named_port {
+    name = "http"
+    port = 30080
+  }
+
+    named_port {
+    name = "https"
+    port = "30443"
+  }
+  
   instances = google_compute_instance.k8s_workers[*].self_link
 }
 

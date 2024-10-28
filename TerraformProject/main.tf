@@ -89,3 +89,11 @@ resource "google_compute_instance" "k8s_workers" {
 
   tags = ["k8s", "ssh", "worker"]
 }
+
+# Cấu hình lưu trữ trạng thái trên GCS
+terraform {
+  backend "gcs" {
+    bucket  = "k8s_bucket_group10_nt531"  # Tên bucket đã tạo
+    prefix  = "terraform/state"
+  }
+}
