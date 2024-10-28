@@ -87,5 +87,5 @@ resource "google_compute_instance" "k8s_workers" {
     chmod 0440 /etc/sudoers.d/k8s-admin
   EOT
 
-  tags = ["k8s", "ssh"]
+  tags = ["k8s", "ssh", "worker"]
 }
